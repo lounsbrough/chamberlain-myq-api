@@ -1,16 +1,16 @@
 const express = require('express')
-const url = require('url')
 
 let app = express()
 const port = 7237
 
-app.get('/', async (req, res) => {
+app.use(express.json())
+
+app.post('/', async (req, res) => {
     let garageDoorService = require('./services/door-control-service')
-    let queryData = url.parse(req.url, true).query
     res.writeHead(200, { 'Content-Type': 'text/plain' })
-    if (queryData.password && queryData.password == process.env.HTTPS_AUTHENTICATION_SECRET) {
-        if (queryData.door && queryData.state) {
-            let response = await garageDoorService.setGarageDoorState(queryData.door, (queryData.state.toLowerCase() == 'open' ? true : false))
+    if (req.body.authCode && req.body.authCode == process.env.HTTPS_AUTHENTICATION_SECRET) {
+        if (req.body.door && req.body.action) {
+            let response = await garageDoorService.setGarageDoorState(req.body.door, (req.body.action.toLowerCase() == 'open' ? true : false))
             res.write(response)
         }
     }
