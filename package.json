@@ -139,24 +139,7 @@
       "resolved": "https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.2.tgz",
       "version": "1.0.2"
     },
-    "cryptiles": {
-      "dependencies": {
-        "boom": {
-          "integrity": "sha512-Z5BTk6ZRe4tXXQlkqftmsAUANpXmuwlsF5Oov8ThoMbQRzdGTA1ngYRW160GexgOgjsFOKJz0LYhoNi+2AMBUw==",
-          "requires": {
-            "hoek": "4.2.0"
-          },
-          "resolved": "https://registry.npmjs.org/boom/-/boom-5.2.0.tgz",
-          "version": "5.2.0"
-        }
-      },
-      "integrity": "sha1-qJ+7Ig9c4l7FboxKqKT9e1sNKf4=",
-      "requires": {
-        "boom": "5.2.0"
-      },
-      "resolved": "https://registry.npmjs.org/cryptiles/-/cryptiles-3.1.2.tgz",
-      "version": "3.1.2"
-    },
+    "cryptiles": "^4.1.2",
     "dashdash": {
       "integrity": "sha1-hTz6D3y+L+1d4gMmuN1YEDX24vA=",
       "requires": {
@@ -309,11 +292,7 @@
       "resolved": "https://registry.npmjs.org/hawk/-/hawk-6.0.2.tgz",
       "version": "6.0.2"
     },
-    "hoek": {
-      "integrity": "sha512-v0XCLxICi9nPfYrS9RL8HbYnXi9obYAeLbSP00BmnZwCK9+Ih9WOjoZ8YoHCoav2csqn4FOz4Orldsy2dmDwmQ==",
-      "resolved": "https://registry.npmjs.org/hoek/-/hoek-4.2.0.tgz",
-      "version": "4.2.0"
-    },
+    "hoek": "^5.0.4",
     "http-errors": {
       "dependencies": {
         "depd": {
@@ -404,11 +383,7 @@
       "version": "1.4.1"
     },
     "letsencrypt": "^2.1.9",
-    "lodash": {
-      "integrity": "sha1-W/Rejkm6QYnhfUgnid/RW9FAt7Y=",
-      "resolved": "https://registry.npmjs.org/lodash/-/lodash-3.10.1.tgz",
-      "version": "3.10.1"
-    },
+    "lodash": "^4.17.11",
     "media-typer": {
       "integrity": "sha1-hxDXrwqmJvj/+hzgAWhUUmMlV0g=",
       "resolved": "https://registry.npmjs.org/media-typer/-/media-typer-0.3.0.tgz",
@@ -604,21 +579,7 @@
       "resolved": "https://registry.npmjs.org/sntp/-/sntp-2.1.0.tgz",
       "version": "2.1.0"
     },
-    "sshpk": {
-      "integrity": "sha1-US322mKHFEMW3EwY/hzx2UBzm+M=",
-      "requires": {
-        "asn1": "0.2.3",
-        "assert-plus": "1.0.0",
-        "bcrypt-pbkdf": "1.0.1",
-        "dashdash": "1.14.1",
-        "ecc-jsbn": "0.1.1",
-        "getpass": "0.1.7",
-        "jsbn": "0.1.1",
-        "tweetnacl": "0.14.5"
-      },
-      "resolved": "https://registry.npmjs.org/sshpk/-/sshpk-1.13.1.tgz",
-      "version": "1.13.1"
-    },
+    "sshpk": "^1.14.2",
     "statuses": {
       "integrity": "sha1-+vUbnrdKrvOzrPStX2Gr8ky3uT4=",
       "resolved": "https://registry.npmjs.org/statuses/-/statuses-1.3.1.tgz",
