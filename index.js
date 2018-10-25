@@ -1,5 +1,7 @@
 const express = require('express')
 
+const logger = require('./services/logging-service')
+
 let app = express()
 const port = 7237
 
@@ -18,5 +20,5 @@ app.post('/', async (req, res) => {
 })
 
 app.listen(port, function () {
-    console.log(`app listening on port ${port}`)
+    logger.info(`app listening on port ${port}`)
 })
