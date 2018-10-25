@@ -8,7 +8,7 @@ const logDir = 'log'
 if (!fs.existsSync(logDir)) {
     fs.mkdirSync(logDir)
 }
-const tsFormat = () => (new Date()).toLocaleTimeString()
+const tsFormat = () => (new Date()).toLocaleString()
 const logger = new (winston.Logger)({
     transports: [
         new (winston.transports.Console)({
