@@ -12,7 +12,9 @@ app.post('/', async (req, res) => {
     res.writeHead(200, { 'Content-Type': 'text/plain' })
     if (req.body.authCode && req.body.authCode == process.env.HTTPS_AUTHENTICATION_SECRET) {
         if (req.body.door && req.body.action) {
-            let response = await garageDoorService.setGarageDoorState(req.body.door, (req.body.action.toLowerCase() == 'open' ? true : false))
+            let response
+            response = await garageDoorService.setGarageDoorState(req.body.door, (req.body.action.toLowerCase() == 'open' ? true : false))
+            logger.info(response)
             res.write(response)
         }
     }
