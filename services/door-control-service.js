@@ -32,12 +32,12 @@ const setGarageDoorState = async (doorName, open) => {
             logger.warn((open ? 'Opening' : 'Closing') + ` ${selectedDevice.name}...`)
             const response = await myqApi.setDoorState(selectedDevice.id, state)
 
-            if (response.returnCode == 0) {
+            if (response.returnCode === 0) {
                 serviceResponse = 'Command processed succesfully'
                 logger.info(serviceResponse)
                 success = true
             } else {
-                serviceResponse = `Command failed: ${responseBody.ErrorMessage}`
+                serviceResponse = `Command failed: ${response.message}`
                 logger.error(serviceResponse)
             }
         } else {
