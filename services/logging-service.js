@@ -3,7 +3,7 @@ const { combine, timestamp, simple } = format
 require('winston-daily-rotate-file')
 const fs = require('fs')
 
-const loggingDirectory = 'logs'
+const loggingDirectory = '../logs'
 
 if (!fs.existsSync(loggingDirectory)) {
     fs.mkdirSync(loggingDirectory)
