@@ -4,6 +4,7 @@
   "description": "Rest API built around Chamberlain's MyQ API",
   "main": "index.js",
   "dependencies": {
+    "axios": "^0.19.0",
     "express": "^4.16.4",
     "fs": "^0.0.1-security",
     "myq-api": "0.0.2",
