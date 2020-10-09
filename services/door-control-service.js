@@ -1,8 +1,8 @@
 const logger = require('./logging-service')
 const sleep = require('system-sleep')
-const MyQ = require('myq-api');
+const MyQ = require('myq-api')
 
-const myqApi = new MyQ(process.env.MYQ_API_USERNAME, process.env.MYQ_API_PASSWORD);
+const myqApi = new MyQ()
 
 const setGarageDoorState = async (doorName, open) => {
     let serviceResponse = '',
@@ -12,12 +12,22 @@ const setGarageDoorState = async (doorName, open) => {
 
     while (!success && attempts < maxAttempts) {
         logger.info(`Logging in`)
-        await myqApi.login()
+        try {
+            await myqApi.login(process.env.MYQ_API_USERNAME, process.env.MYQ_API_PASSWORD)
+        } catch (error) {
+            logger.error(error)
+        }
 
         logger.info(`Looking for device ${doorName}`)
-        let deviceList = await myqApi.getDevices(2)
+        let deviceList
+        try {
+            deviceList = await myqApi.getDevices()
+            logger.info(JSON.stringify(deviceList))
+        } catch (error) {
+            logger.error(error)
+        }
 
-        let state = open ? 1 : 0
+        let state = open ? MyQ.actions.door.OPEN : MyQ.actions.door.CLOSE
 
         let selectedDevice
         if (deviceList) {
@@ -30,19 +40,16 @@ const setGarageDoorState = async (doorName, open) => {
 
         if (selectedDevice) {
             logger.warn((open ? 'Opening' : 'Closing') + ` ${selectedDevice.name}...`)
-            const response = await myqApi.setDoorState(selectedDevice.id, state)
-
-            if (response.returnCode === 0) {
+            try {
+                await myqApi.setDoorState(selectedDevice.serial_number, state)
                 serviceResponse = 'Command processed succesfully'
-                logger.info(serviceResponse)
                 success = true
-            } else {
-                serviceResponse = `Command failed: ${response.message}`
-                logger.error(serviceResponse)
+            } catch (error) {
+                logger.error(error)
+                serviceResponse = `Command failed: ${setStateResult.message}`
             }
         } else {
             serviceResponse = 'Could not find device'
-            logger.error(serviceResponse)
         }
 
         if (!success) {
