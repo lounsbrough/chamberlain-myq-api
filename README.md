@@ -1,8 +1,8 @@
 # chamberlain-myq-api
 Rest API built around Chamberlain's MyQ API
 
+Sample Request JSON:
 ```json
-Sample Request JSON
 {
     "authCode": "********",
     "door": "Main Door",
